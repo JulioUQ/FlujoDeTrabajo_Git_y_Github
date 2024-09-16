@@ -1,6 +1,5 @@
 
 
-  ![[Git-y-Github.png|300]]
 # Directrices de Github y Git para trabajar con repositorios remotos
 
 <p align="justify">GitHub es una plataforma ampliamente utilizada para colaborar en proyectos de desarrollo de software a nivel global. Trabajar con repositorios remotos en GitHub es fundamental para compartir código, colaborar con otros desarrolladores y mantener un control preciso de las versiones de tu proyecto. Git es un sistema de control de versiones que me permite trabajar cambios sobre mi código con seguridad. 
