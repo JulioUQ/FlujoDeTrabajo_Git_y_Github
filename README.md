@@ -2,26 +2,24 @@
 
 # Directrices de Github y Git para trabajar con repositorios remotos
 
-<p align="justify">GitHub es una plataforma ampliamente utilizada para colaborar en proyectos de desarrollo de software a nivel global. Trabajar con repositorios remotos en GitHub es fundamental para compartir código, colaborar con otros desarrolladores y mantener un control preciso de las versiones de tu proyecto. Git es un sistema de control de versiones que me permite trabajar cambios sobre mi código con seguridad. 
+GitHub es una plataforma ampliamente utilizada para colaborar en proyectos de desarrollo de software a nivel global. Trabajar con repositorios remotos en GitHub es fundamental para compartir código, colaborar con otros desarrolladores y mantener un control preciso de las versiones de tu proyecto. Git es un sistema de control de versiones que me permite trabajar cambios sobre mi código con seguridad. 
 
 En esta sección, te presentaremos algunas pautas y mejores prácticas esenciales de GitHub y Git para trabajar eficazmente con repositorios remotos. Estas directrices te ayudarán a gestionar y colaborar en proyectos de manera efectiva, desde clonar y colaborar en repositorios hasta sincronizar y contribuir al código de otros.</p>
 ## Configurando la autentificación SSH para una cuenta Github
 
-<p align="justify">La autenticación SSH (Secure Shell) permite interactuar con GitHub de manera segura, sin necesidad de ingresar tu usuario y contraseña cada vez que accedes a tu cuenta o realizas operaciones de Git. En lugar de usar las credenciales habituales, GitHub utiliza un par de claves SSH: una **clave privada** y una **clave pública**.</p>
+La autenticación SSH (Secure Shell) permite interactuar con GitHub de manera segura, sin necesidad de ingresar tu usuario y contraseña cada vez que accedes a tu cuenta o realizas operaciones de Git. En lugar de usar las credenciales habituales, GitHub utiliza un par de claves SSH: una **clave privada** y una **clave pública**.</p>
 
 ### **Comprueba las claves SSH existentes**
-<p align="justify">Primero, comprueba si tienes claves SSH en tu PC. Abre tu terminal y ejecuta el siguiente comando:
-</p>
+Primero, comprueba si tienes claves SSH en tu PC. Abre tu terminal y ejecuta el siguiente comando:
+
 ```bash
-
 ls -al ~/.ssh
-
 ```
 
 Este comando listará cualquier clave SSH existente en tu directorio `~/.ssh`.
   
 ### **Generar claves pares SSH**
-<p align="justify">Si no tienes una clave SSH o quieres generar un nuevo par, puedes hacerlo con el siguiente comando:  </p>
+Si no tienes una clave SSH o quieres generar un nuevo par, puedes hacerlo con el siguiente comando:  
 
 ```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
@@ -37,20 +35,22 @@ Ahora, necesitas añadir tu clave SSH al agente SSH. Ejecuta el siguiente comand
 
 ```bash
 eval "$(ssh-agent -s)"
-
 ssh-add ~/.ssh/id_ed25519
 ```
 
 Asegurate de usar el camino correcto para tu clave privada (`~/.ssh/id_ed25519` en este ejemplo).
 
 ### **Copia la clave pública SSH a GitHub**
-<p align="justify">Ahora, necesitas copiar tu clave SSH a tu cuenta de GitHub. Es posible usar el siguiente comando para copiarla en el portapapeles:</p>
+Ahora, necesitas copiar tu clave SSH a tu cuenta de GitHub. Es posible usar el siguiente comando para copiarla en el portapapeles:
+
 ```bash
 pbcopy < ~/.ssh/id_ed25519.pub
 ```
-<p align="justify">Entonces, dirígete a los ajustes de tu cuenta de GitHub, navega a 'SSH and GPG keys' y pincha en 'New SSH key'. Pega la clave publica en el campo 'Clave' y dale un título.</p>
+Entonces, dirígete a los ajustes de tu cuenta de GitHub, navega a 'SSH and GPG keys' y pincha en 'New SSH key'. Pega la clave publica en el campo 'Clave' y dale un título.
+
 ### **Prueba la conexión SSH**
-<p align="justify">Asegúrate que tu clave esta correctamente construida y ajustada, puedes testear la conexión a GitHub:</p>
+Asegúrate que tu clave esta correctamente construida y ajustada, puedes testear la conexión a GitHub:
+
 ```bash
 ssh -T git@github.com
 ```
@@ -59,7 +59,7 @@ Puede que se te solicite confirmar la autenticidad. Presiona `Enter` y seleccion
 
 > [!NOTE]
 > Hi username! You've successfully authenticated, but GitHub does not provide shell access.
-<p align="justify">Ahora, deberías poder clonar y trabajar con tus repositorios de GitHub utilizando la autenticación SSH, que es más segura y no requiere Tokens de Acceso Personal (PAT) para autenticación.</p>
+Ahora, deberías poder clonar y trabajar con tus repositorios de GitHub utilizando la autenticación SSH, que es más segura y no requiere Tokens de Acceso Personal (PAT) para autenticación.
 
 ## Flujo de trabajo con Git
 
@@ -88,7 +88,7 @@ El flujo de trabajo en Git es el conjunto de pasos y prácticas que sigues para 
 | **git remote add origin <URL>**    | Agrega un repositorio remoto con el alias "origin" y la URL especificada                                                                      |
 | **git remote remove origin**       | Elimina el repositorio remoto llamado "origin" (o cualquier otro alias especificado)                                                          |
 
-### **Instalar Git**
+## **Instalar Git**
 
 Si aún no tienes Git instalado en tu Mac, puedes hacerlo siguiendo estos pasos:  
 1. Abre la Terminal (puedes encontrarla en la carpeta "Utilidades" dentro de la carpeta "Aplicaciones").
@@ -99,7 +99,7 @@ git --version
 ```
 
 Si Git no está instalado, se te pedirá que lo instales. Sigue las instrucciones para hacerlo.
-### **Configurar Git**
+## **Configurar Git**
 
 Antes de continuar, debes configurar tu nombre de usuario y dirección de correo electrónico en Git. Esto es importante para que tus contribuciones queden registradas correctamente en GitHub.
 
@@ -121,7 +121,7 @@ git config --global --unset-all user.name
 git config --global user.name "Tu Nombre"
 git config --global user.email "tu@email.com"
 ```
-### **Crear un repositorio en GitHub**
+## **Crear un repositorio en GitHub**
 
 1. Ve a GitHub (https://github.com) y asegúrate de estar conectado a tu cuenta.
 2. Haz clic en el botón "+" en la esquina superior derecha y selecciona "Nuevo repositorio".
@@ -133,14 +133,12 @@ git config --global user.email "tu@email.com"
 Ahora, clonaremos el repositorio en tu Mac para que puedas empezar a trabajar en él. Reemplaza `nombredeusuario` y `nombredelrepositorio` con tu nombre de usuario de GitHub y el nombre de tu repositorio:
 
 ```bash
-
 git clone https://github.com/nombredeusuario/nombredelrepositorio.git
-
 ```
 
 Esto creará una copia local del repositorio en tu Mac.
 
-### **Agregar archivos y hacer un commit**
+## **Agregar archivos y hacer un commit**
 
 1. Coloca los archivos que deseas subir al repositorio en la carpeta clonada en tu Mac.
 2. Abre la Terminal y navega hasta la carpeta del repositorio utilizando el comando `cd`, por ejemplo:  
@@ -156,7 +154,7 @@ git add .
 git commit -m "Mensaje de commit"
 ```
 
-### **Verifica el estado de tus cambios**
+## **Verifica el estado de tus cambios**
 
 Veamos el estado de los cambios realizados hasta ahora.
 
@@ -171,7 +169,7 @@ Deberíamos ver el siguiente mensaje:
 > Your branch is up to date with 'origin/main'.
 > nothing to commit, working tree clean*
 
-### **Subir los cambios a GitHub**
+## **Subir los cambios a GitHub**
 
 Finalmente, sube los cambios a tu repositorio en GitHub con el siguiente comando:
 
@@ -182,11 +180,13 @@ git push origin main
   Donde `main` es la rama principal por defecto. Si tu repositorio utiliza otra rama principal, reemplázala en el comando anterior.
 ### **Cerrar conexión con un repositorio remoto**
 
-<p align="justify">Para desconectar el repositorio actual, puedes simplemente cerrar la terminal o la ventana de la terminal. Esto terminará cualquier conexión o sesión con ese repositorio.</p>
-<p align="justify">Es recomendable cambiar a la rama principal antes de desconectar el repositorio actual, en caso de estar en una rama diferente de la principal. Puedes hacerlo con el comando:</p>
+Para desconectar el repositorio actual, puedes simplemente cerrar la terminal o la ventana de la terminal. Esto terminará cualquier conexión o sesión con ese repositorio.
+Es recomendable cambiar a la rama principal antes de desconectar el repositorio actual, en caso de estar en una rama diferente de la principal. Puedes hacerlo con el comando:
 
 ```bash
 git checkout main 
 ```
 
 Reemplaza `main` con el nombre de tu rama principal si es diferente.
+
+**Para un ejemplo de uso revisar el jupyter notebook `Ejemplo de uso con Git y Github`**
